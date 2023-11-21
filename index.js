@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5050;
+const cors = require('cors');
 
 app.use(express.json());
 
@@ -15,6 +16,8 @@ app.get("/", (_req, res) => {
 
 app.use("/warehouses", warehouseRoutes);
 app.use("/inventories", inventoryRoutes);
+app.use(cors());
+
 
 app.listen(PORT, () => {
   console.log(`running at http://localhost:${PORT}`);
